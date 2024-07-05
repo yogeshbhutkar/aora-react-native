@@ -101,3 +101,16 @@ export const getCurrentUser = async () => {
     throw new Error("Failed to get current user");
   }
 };
+
+export const getAllPosts = async () => {
+  try {
+    const posts = await databases.listDocuments(
+      config.databaseId,
+      config.videoCollectionId
+    );
+
+    return posts.documents;
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
+};
